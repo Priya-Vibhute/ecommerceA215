@@ -1,0 +1,15 @@
+package com.study.backend.entities;
+
+public class Product {
+	
+	private Integer id;
+	
+	private String name;
+	
+	private String descrition;
+	
+	private Integer price;
+	
+	private String imageUrl;
+
+}

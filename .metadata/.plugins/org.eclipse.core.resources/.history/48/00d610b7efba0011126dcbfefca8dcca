@@ -1,0 +1,5 @@
+package com.study.backend.entities;
+
+public class Order {
+
+}

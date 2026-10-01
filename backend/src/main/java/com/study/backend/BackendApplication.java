@@ -1,0 +1,24 @@
+package com.study.backend;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.study.backend.entities.Order;
+import com.study.backend.entities.OrderItem;
+import com.study.backend.entities.User;
+import com.study.backend.repositories.UserRepository;
+
+@SpringBootApplication
+public class BackendApplication {
+	
+	
+
+	public static void main(String[] args) {
+		SpringApplication.run(BackendApplication.class, args);
+		
+	 
+	     
+		
+	}
+
+}

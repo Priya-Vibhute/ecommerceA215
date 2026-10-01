@@ -1,0 +1,12 @@
+package com.study.backend.entities;
+
+import java.time.LocalDateTime;
+
+public class Cart {
+	
+	private Integer id;
+	
+	private LocalDateTime createdAt;
+	
+
+}
