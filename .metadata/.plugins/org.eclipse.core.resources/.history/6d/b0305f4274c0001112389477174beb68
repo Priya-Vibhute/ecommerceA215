@@ -1,0 +1,5 @@
+package com.study.backend.enums;
+
+public enum Role {
+    
+}

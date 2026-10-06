@@ -1,0 +1,9 @@
+package com.study.backend.services;
+
+import com.study.backend.dtos.UserRequestDto;
+
+public interface UserService {
+	
+	register(UserRequestDto userRequestDto);
+
+}

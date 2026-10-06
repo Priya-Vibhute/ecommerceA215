@@ -1,7 +1,0 @@
-package com.study.backend.entities;
-
-public class OrderItem {
-	
-	private Integer id;
-
-}

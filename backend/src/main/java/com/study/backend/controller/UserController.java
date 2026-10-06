@@ -1,5 +1,6 @@
 package com.study.backend.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,10 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.study.backend.dtos.UserRequestDto;
 import com.study.backend.dtos.UserResponseDto;
+import com.study.backend.services.UserService;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
+	
+	@Autowired
+	private UserService userService;
 	
 	// ==========================================================
 	// POST - localhost:8080/users
@@ -21,14 +26,9 @@ public class UserController {
 	@PostMapping
 	public ResponseEntity<UserResponseDto> register(@RequestBody UserRequestDto userRequestDto)
 	{
-		System.out.println(userRequestDto);
+		UserResponseDto responseDto = userService.register(userRequestDto);
 		
-		UserResponseDto userResponseDto = new UserResponseDto();
-		userResponseDto.setFirstName(userRequestDto.getFirstName());
-		userResponseDto.setLastName(userRequestDto.getLastName());
-		userResponseDto.setEmail(userRequestDto.getEmail());
-		
-		return new ResponseEntity<UserResponseDto>(userResponseDto, HttpStatus.CREATED);
+		return new ResponseEntity<UserResponseDto>(responseDto, HttpStatus.CREATED);
 	}
 
 }

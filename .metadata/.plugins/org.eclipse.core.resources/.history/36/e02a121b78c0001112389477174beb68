@@ -1,0 +1,15 @@
+package com.study.backend.services.impl;
+
+import com.study.backend.dtos.UserRequestDto;
+import com.study.backend.dtos.UserResponseDto;
+import com.study.backend.services.UserService;
+
+public class UserServiceImpl2 implements UserService{
+
+	@Override
+	public UserResponseDto register(UserRequestDto userRequestDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

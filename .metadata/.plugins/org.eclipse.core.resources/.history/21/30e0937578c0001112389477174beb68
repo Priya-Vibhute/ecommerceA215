@@ -1,0 +1,34 @@
+package com.study.backend.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.study.backend.dtos.UserRequestDto;
+import com.study.backend.dtos.UserResponseDto;
+import com.study.backend.services.UserService;
+
+@RestController
+@RequestMapping("/users")
+public class UserController {
+	
+	@Autowired
+	private UserService userService;
+	
+	// ==========================================================
+	// POST - localhost:8080/users
+	//============================================================
+	
+	@PostMapping
+	public ResponseEntity<UserResponseDto> register(@RequestBody UserRequestDto userRequestDto)
+	{
+		UserResponseDto responseDto = userService.register(userRequestDto);
+		
+		return new ResponseEntity<UserResponseDto>(new UserResponseDto(), HttpStatus.CREATED);
+	}
+
+}
