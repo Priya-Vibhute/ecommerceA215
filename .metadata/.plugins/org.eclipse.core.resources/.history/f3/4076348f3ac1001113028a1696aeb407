@@ -1,0 +1,9 @@
+package com.study.backend.services;
+
+import com.study.backend.dtos.ProductDto;
+
+public interface ProductService {
+	
+	ProductDto addProduct(ProductDto productDto);
+
+}

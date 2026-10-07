@@ -1,0 +1,54 @@
+package com.study.backend.services.impl;
+
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.study.backend.dtos.ProductDto;
+import com.study.backend.entities.Product;
+import com.study.backend.repositories.ProductRepository;
+import com.study.backend.services.ProductService;
+
+public class ProductServiceImpl implements ProductService {
+	
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	@Autowired
+	private ProductRepository productRepository;
+
+	@Override
+	public ProductDto addProduct(ProductDto productDto) {
+		
+		// dto to entity
+		modelMapper.map(productDto, Product.class);
+		
+		return null;
+	}
+
+	@Override
+	public List<ProductDto> getAllProducts() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ProductDto getProducById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteProduct(Integer id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ProductDto updateProduct(Integer id, ProductDto productDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

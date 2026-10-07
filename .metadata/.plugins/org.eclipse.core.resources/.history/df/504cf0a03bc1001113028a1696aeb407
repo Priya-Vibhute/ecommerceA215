@@ -1,0 +1,15 @@
+package com.study.backend.services;
+
+import java.util.List;
+
+import com.study.backend.dtos.ProductDto;
+
+public interface ProductService {
+	
+	ProductDto addProduct(ProductDto productDto);
+	
+	List<ProductDto>  getAllProducts();
+	
+	ProductDto getProducById(Integer id);
+
+}

@@ -5,6 +5,9 @@ import com.study.backend.dtos.UserResponseDto;
 
 public interface UserService {
 	
+	
 	UserResponseDto register(UserRequestDto userRequestDto);
+	
+	
 
 }
