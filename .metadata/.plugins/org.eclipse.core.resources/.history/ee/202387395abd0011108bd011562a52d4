@@ -1,7 +1,0 @@
-package com.study.backend.services.impl;
-
-import com.study.backend.services.UserService;
-
-public class UserServiceImpl implements UserService{
-
-}
