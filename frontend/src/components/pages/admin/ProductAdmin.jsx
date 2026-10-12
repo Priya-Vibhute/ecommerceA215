@@ -14,10 +14,16 @@ function ProductAdmin() {
       formState: { errors },
     } = useForm();
 
-    const handleToUpdate=(data)=>{
+    const handleToUpdate=async(data)=>{
        
       console.log(data)
-      
+      try {
+       const response=await api.put(`/products/${selectedProduct}`,data);
+       fetchProducts()
+       document.getElementById('close-btn').click()
+      } catch (error) {
+        alert("Something went wrong")
+      }
 
     }
 
@@ -63,6 +69,7 @@ function ProductAdmin() {
               const response=await api.delete(`/products/${productId}`)  // backend
               console.log(response)
               fetchProducts()
+             
           
         } catch (error) {
           alert("something went wrong")
@@ -96,7 +103,7 @@ function ProductAdmin() {
               <td>{p.name}</td>
               <td>₹{p.price}</td>
               <td>{p.description}</td>
-              <td>-</td>
+              <td>{p.category?.name || "not assigned"}</td>
               <td>
                 
 
@@ -112,6 +119,12 @@ onClick={()=>changeSelectedProduct(p)}>
 
 
                 {/* modal */}
+
+
+
+
+
+
 
                 <button
                   className="btn btn-danger btn-sm"
@@ -231,11 +244,13 @@ onClick={()=>changeSelectedProduct(p)}>
             
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id='close-btn'>Close</button>
       </div>
     </div>
   </div>
 </div>
+
+
 </div>
 
 

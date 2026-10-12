@@ -1,5 +1,7 @@
 package com.study.backend.dtos;
 
+import com.study.backend.entities.Category;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +24,8 @@ public class ProductDto {
 	private Integer price;
 	
 	private String imageUrl;
+	
+	private Category category;
 
 	public Double getDiscount()
 	{

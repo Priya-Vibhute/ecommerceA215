@@ -1,12 +1,16 @@
 package com.study.backend.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.study.backend.dtos.ProductDto;
 import com.study.backend.entities.Category;
 import com.study.backend.services.CategoryService;
 
@@ -29,6 +33,17 @@ public class CategoryController {
 		return ResponseEntity.ok(category);
 	}
 	
+	
+//	GET   localhost:8080/category/1/products
+	
+	
+	@GetMapping("/{categoryId}/products")
+	public ResponseEntity<List<ProductDto>> getProducts(@PathVariable Integer categoryId )
+	{
+		List<ProductDto> products = categoryService.getProducts( categoryId);
+		
+		return ResponseEntity.ok(products);
+	}
 	
 
 }
