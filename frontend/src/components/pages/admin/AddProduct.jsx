@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import api from "../../../api";
 
 function AddProduct() {
+
+// step 1
+ const [categories,setCategories]=useState(null)
+
+ // step 2
+ const fetchCategories=async ()=>{
+     try {
+
+        const response=await api.get("/categories")
+        setCategories(response.data._embedded.categories)
+      
+     } catch (error) {
+         alert("Something went wrong")
+     }
+    
+ }
+
+ // step 3
+
+ useEffect(()=>{
+     fetchCategories();
+ },[])
+
+
+
+
+
   const {
     register,
     handleSubmit,
@@ -18,6 +45,9 @@ function AddProduct() {
 
       const response=await api.post("/products",data)
       console.log(response)
+
+      await api.put(`/category/${data.categoryId}/products/${response.data.id}`)
+
       alert("Product added successfully")
       
     } catch (error) {
@@ -125,6 +155,17 @@ function AddProduct() {
                 </small>
               )}
             </div>
+
+
+              <div className="col-12">
+
+                <label htmlFor="">Select category</label>
+                <select name="" id="" {...register('categoryId')}>
+                   {categories  &&  categories.map(c=><option value={c.id}>{c.name}</option>)}
+                </select> 
+
+              </div>
+
 
             <div className="col-12">
               <button type="submit" className="admin-submit-btn">

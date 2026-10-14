@@ -13,6 +13,8 @@ import com.study.backend.dtos.UserRequestDto;
 import com.study.backend.dtos.UserResponseDto;
 import com.study.backend.services.UserService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/users")
 @CrossOrigin(origins = "http://localhost:5173")
@@ -26,7 +28,7 @@ public class UserController {
 	//============================================================
 	
 	@PostMapping
-	public ResponseEntity<UserResponseDto> register(@RequestBody UserRequestDto userRequestDto)
+	public ResponseEntity<UserResponseDto> register( @Valid @RequestBody UserRequestDto userRequestDto)
 	{
 		UserResponseDto responseDto = userService.register(userRequestDto);
 		
