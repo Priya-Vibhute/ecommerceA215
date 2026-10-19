@@ -1,7 +1,12 @@
 package com.study.backend.dtos;
 
+import com.study.backend.validators.PasswordMatch;
+
 import jakarta.persistence.Column;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,16 +15,23 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
+@PasswordMatch
 public class UserRequestDto {
 	@NotNull
+	@NotBlank
+	@Size(min = 2,max = 25)
 	private String firstName;
 	
+	@NotNull
+	@NotBlank
 	private String lastName;
 
+	@Pattern(regexp = "^((?!\\.)[\\w\\-_.]*[^.])(@\\w+)(\\.\\w+(\\.\\w+)?[^.\\W])$")
 	private String email;
 	
+	@Pattern(regexp = "^((?=\\S*?[A-Z])(?=\\S*?[a-z])(?=\\S*?[0-9]).{6,})\\S$")
 	private String password;
 	
 	private String confirmPassword;
+	
 }

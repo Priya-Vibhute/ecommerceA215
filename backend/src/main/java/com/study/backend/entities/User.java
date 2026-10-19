@@ -36,7 +36,7 @@ public class User {
 	@Column(unique = true,nullable = false)
 	private String email;
 	
-	@Column(nullable = false, length = 16)
+	@Column(nullable = false, length = 250)
 	private String password;
 	
 	@Enumerated(EnumType.STRING)

@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"com.study.backend.dtos","c":"UserRequestDto","l":"UserRequestDto()","u":"%3Cinit%3E()","k":"3"}];updateSearchResults();

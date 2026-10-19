@@ -1,7 +1,9 @@
 package com.study.backend.services.impl;
 
+import org.jspecify.annotations.Nullable;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.study.backend.dtos.UserRequestDto;
@@ -20,6 +22,9 @@ public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	private ModelMapper modelMapper;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Override
 	public UserResponseDto register(UserRequestDto userRequestDto) {
@@ -29,6 +34,13 @@ public class UserServiceImpl implements UserService{
 		
 		// set role for registered user
 		user.setRole(Role.ROLE_USER);
+		
+        //encode password
+		String encodedPassword = passwordEncoder.encode(user.getPassword());
+		
+		
+//		set encoded password for user
+		user.setPassword(encodedPassword);
 		
 		
        //save entity object to database 

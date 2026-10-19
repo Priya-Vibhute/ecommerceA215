@@ -19,6 +19,8 @@ import com.study.backend.dtos.ApiResponse;
 import com.study.backend.dtos.ProductDto;
 import com.study.backend.services.ProductService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/products")
 @CrossOrigin(origins = "http://localhost:5173")
@@ -33,7 +35,7 @@ public class ProductController {
 	// ================================================================
 	
 	@PostMapping
-	public ResponseEntity<ProductDto> addProduct(@RequestBody ProductDto productDto)
+	public ResponseEntity<ProductDto> addProduct(@Valid @RequestBody ProductDto productDto)
 	{
 		ProductDto savedProduct = productService.addProduct(productDto);
 		
@@ -75,7 +77,7 @@ public class ProductController {
 	
 	 @PutMapping("/{id}")
 	 public ResponseEntity<ProductDto> updateProduct(@PathVariable Integer id 
-			 ,@RequestBody ProductDto productDto )
+			 ,@Valid @RequestBody ProductDto productDto )
 	 {
 		ProductDto updatedProduct = productService.updateProduct(id, productDto); 
 		return ResponseEntity.ok(updatedProduct);
@@ -96,9 +98,7 @@ public class ProductController {
 	 }
 	
 	
-	
-	
-	
-	
+	 
+	 
 
 }
