@@ -24,5 +24,6 @@
         </endorsedDirs>
     </libraryInfo>
     <libraryInfo home="C:\Users\user\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_22.0.2.v20240802-1626\jre" version="22.0.2"/>
+    <libraryInfo home="C:\Program Files\Java\jdk-27.0.1" version="27.0.1"/>
     <libraryInfo home="C:\Users\class3\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_25.0.4.v20260826-0822\jre" version="25.0.4.1"/>
 </libraryInfos>
