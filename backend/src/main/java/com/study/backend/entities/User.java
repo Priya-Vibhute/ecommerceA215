@@ -1,6 +1,12 @@
 package com.study.backend.entities;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.study.backend.enums.Role;
 
@@ -21,7 +27,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class User {
+public class User implements UserDetails{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
@@ -50,7 +56,30 @@ public class User {
 	
 	@OneToMany(mappedBy = "user")
 	private List<Order> orders;
-	
-	
 
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		ArrayList<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();
+		SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.toString());
+		roles.add(authority);
+		return roles;
+		
+        //	or 
+		// return List.of(new SimpleGrantedAuthority(role.toString()))
+	}
+
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return email;
+	}
+	
+	
+	@Override
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return password;
+	}
+	
+	
 }
