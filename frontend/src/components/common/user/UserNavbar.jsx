@@ -1,6 +1,13 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { LoginContext } from "../../../context/LoginContext";
 
 function UserNavbar() {
+
+
+
+
+
   return (
     <nav className="navbar navbar-expand-lg bg-white border-bottom shadow-sm">
       <div className="container-fluid px-5">
@@ -10,7 +17,7 @@ function UserNavbar() {
           to="/"
           className="navbar-brand fw-bold text-primary fs-3 me-4"
         >
-          ShopEase
+          ShopEase 
         </Link>
 
         {/* Mobile Toggle */}
@@ -84,7 +91,7 @@ function UserNavbar() {
                 type="button"
                 data-bs-toggle="dropdown"
               >
-                👤 Account
+           
               </button>
 
               <ul className="dropdown-menu dropdown-menu-end shadow-sm">

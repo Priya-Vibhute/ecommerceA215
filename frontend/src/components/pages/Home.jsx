@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { LoginProvider } from "../../context/LoginContext";
 
 function Home() {
   const categories = [
@@ -121,6 +122,7 @@ function Home() {
                       objectFit: "cover",
                     }}
                   />
+
 
                   <div className="card-body text-center">
                     <h5 className="fw-semibold mb-0">

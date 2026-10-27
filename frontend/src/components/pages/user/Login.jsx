@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import api from "../../../api";
+import { LoginContext } from "../../../context/LoginContext";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
+
+  const {login}=useContext(LoginContext)// step 1
 
   const {
     register,
@@ -11,8 +15,18 @@ function Login() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit =async (data) => {
     console.log("Login Data:", data);
+
+    try {
+
+     const response=await api.post("/auth/login",data)
+     console.log(response)
+     login(response.data.token)// step 2
+      
+    } catch (error) {
+      alert("Login Failed")
+    }
   };
 
   return (
