@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import api from "../../../api";
@@ -8,6 +8,8 @@ function Login() {
   const [showPassword, setShowPassword] = useState(false);
 
   const {login}=useContext(LoginContext)// step 1
+
+ const navigate= useNavigate()
 
   const {
     register,
@@ -22,9 +24,18 @@ function Login() {
 
      const response=await api.post("/auth/login",data)
      console.log(response)
-     login(response.data.token)// step 2
+     const {token,responseDto}=response.data
+     login(token,responseDto.firstName+" "+responseDto.lastName)// step 2
+
+
+       if(responseDto.role=="ROLE_USER")
+        navigate("/products")
+      else if(responseDto.role=="ROLE_ADMIN")
+        navigate("/admin")
+
       
     } catch (error) {
+      
       alert("Login Failed")
     }
   };

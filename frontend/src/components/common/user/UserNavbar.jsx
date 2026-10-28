@@ -5,7 +5,7 @@ import { LoginContext } from "../../../context/LoginContext";
 function UserNavbar() {
 
 
-
+  const {logout,username,isAuthenticated}=useContext(LoginContext)
 
 
   return (
@@ -95,7 +95,13 @@ function UserNavbar() {
               </button>
 
               <ul className="dropdown-menu dropdown-menu-end shadow-sm">
-                <li>
+
+                {isAuthenticated ? <>
+                
+                {username && <p>{username}</p>}
+                <button onClick={logout}>Logout</button>
+                
+                </> : <> <li>
                   <Link className="dropdown-item" to="/login">
                     Login
                   </Link>
@@ -115,7 +121,8 @@ function UserNavbar() {
                   <Link className="dropdown-item" to="/orders">
                     My Orders
                   </Link>
-                </li>
+                </li></>}
+                
               </ul>
             </div>
 

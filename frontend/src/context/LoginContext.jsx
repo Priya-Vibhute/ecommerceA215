@@ -19,11 +19,12 @@ export const LoginProvider=({children})=>{
     const logout=()=>{
         localStorage.clear()
         setToken(null)
+        setUserName(null)
     }
 
     const isAuthenticated= token ? true: false 
 
-    return <LoginContext.Provider value={{login,logout,isAuthenticated}}> 
+    return <LoginContext.Provider value={{login,logout,isAuthenticated,username}}> 
                {children}
     </LoginContext.Provider>
 

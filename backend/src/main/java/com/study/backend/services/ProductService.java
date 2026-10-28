@@ -2,6 +2,8 @@ package com.study.backend.services;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.study.backend.dtos.ProductDto;
 
 public interface ProductService {
@@ -10,7 +12,7 @@ public interface ProductService {
 	ProductDto addProduct(ProductDto productDto);
 	
 	// fetch all products
-	List<ProductDto>  getAllProducts();
+	Page<ProductDto>  getAllProducts(int page,int size);
 	
 	//fetch product by id
 	ProductDto getProducById(Integer id);

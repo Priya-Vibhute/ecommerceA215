@@ -3,6 +3,7 @@ package com.study.backend.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.study.backend.dtos.ApiResponse;
@@ -37,6 +39,7 @@ public class ProductController {
 	@PostMapping
 	public ResponseEntity<ProductDto> addProduct(@Valid @RequestBody ProductDto productDto)
 	{
+		
 		ProductDto savedProduct = productService.addProduct(productDto);
 		
 		return new ResponseEntity<ProductDto>(savedProduct,HttpStatus.CREATED);
@@ -47,9 +50,12 @@ public class ProductController {
 	// ================================================================
 	
 	@GetMapping
-	public ResponseEntity<List<ProductDto>> getAllProducts()
+	public ResponseEntity<Page<ProductDto>>
+	getAllProducts(@RequestParam(defaultValue = "0") int page,
+	               @RequestParam(defaultValue = "25") int size)
 	{
-		List<ProductDto> products = productService.getAllProducts();
+		System.out.println(page+" "+size);
+		Page<ProductDto> products = productService.getAllProducts(page,size);
 		
 		return ResponseEntity.ok(products);
 	}
