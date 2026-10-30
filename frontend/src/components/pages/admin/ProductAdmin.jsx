@@ -44,13 +44,9 @@ function ProductAdmin() {
   const [products, setProducts] = useState(null)
 
   const fetchProducts = async () => {
-
     try {
-
       const response = await api.get("/products")
-      setProducts(response.data)
-
-
+      setProducts(response.data.content)
     } catch (error) {
       alert("Something went wrong")
       console.log(error)
@@ -92,6 +88,7 @@ function ProductAdmin() {
             <th>Product Name</th>
             <th>Price</th>
             <th>Description</th>
+            <th>imageUrl</th>
             <th>Category</th>
             <th>Actions</th>
           </tr>
@@ -104,6 +101,7 @@ function ProductAdmin() {
               <td>{p.name}</td>
               <td>₹{p.price}</td>
               <td>{p.description}</td>
+              <td>{p.imageUrl}</td>
               <td>{p.category?.name || "not assigned"}</td>
               <td>
                 

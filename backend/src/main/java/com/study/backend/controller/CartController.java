@@ -3,6 +3,7 @@ package com.study.backend.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.study.backend.dtos.AddToCartRequestDto;
 import com.study.backend.dtos.ApiResponse;
+import com.study.backend.entities.Cart;
 import com.study.backend.entities.User;
 import com.study.backend.services.CartService;
 
@@ -33,5 +35,18 @@ public class CartController {
 		
 		return ResponseEntity.ok(new ApiResponse("Product added successfully to cart"));
 	}
+	
+	
+	@GetMapping
+	public ResponseEntity<Cart> getCart(@AuthenticationPrincipal User user)
+	{
+		return ResponseEntity.ok(cartService.getCart(user.getId()));
+	}
+	
+	
+	
+	
+	
+	
 
 }

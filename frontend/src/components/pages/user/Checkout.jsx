@@ -1,6 +1,38 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import api from "../../../api";
 
 function Checkout() {
+
+
+  const [cartItems, setCartItems] = useState(null)
+
+  const fetchCart = async () => {
+    try {
+
+      const response = await api.get("/cart")
+      console.log(response)
+
+    } catch (error) {
+       console.log(error)
+    }
+
+  }
+
+
+  useEffect(() => {
+    fetchCart();
+  }, [])
+
+
+
+
+
+
+
+
+
+
   return (
     <div className="checkout-page">
 
